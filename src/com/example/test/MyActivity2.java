@@ -9,13 +9,14 @@ import android.widget.ImageView;
 
 public class MyActivity2 extends Activity {
 	private static final String TAG = MyActivity2.class.getSimpleName();
-	private ImageView imageView1;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+	}
 
-		imageView1 = (ImageView) findViewById(R.id.imageView1);
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
 		MyService.start(this, getTag());
 	}
 
@@ -27,14 +28,13 @@ public class MyActivity2 extends Activity {
 		Log.i(getTag(), MyReceiver.getTag());
 		Log.i(getTag(), MyReceiver2.getTag());
 		Log.i(getTag(), MyService.getTag());
-		MyService.start(this, getTag());
 	}
 
 	public static void show(Context context) {
 		Intent activity = new Intent(context, MyActivity2.class);
 		context.startActivity(activity);
 	}
-	
+
 	public static String getTag() {
 		return TAG;
 	}

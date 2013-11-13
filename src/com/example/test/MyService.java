@@ -3,6 +3,8 @@ package com.example.test;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.example.test.c.MyControl;
+
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,6 +13,7 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.util.Log;
 
 public class MyService extends Service {
 	private static final String TAG = MyService.class.getSimpleName();
@@ -23,6 +26,8 @@ public class MyService extends Service {
 		};
 	};
 
+	
+	
 	public IBinder onBind(Intent intent) {
 		return null;
 	}
@@ -38,12 +43,16 @@ public class MyService extends Service {
 
 		registerReceiver(new BroadcastReceiver() {
 			public void onReceive(Context arg0, Intent arg1) {
+				Log.i(getTag(), "onReceive():¡¡" + arg1.getAction());
+				MyControl.getInstance().onReceive(arg0, arg1);
 				start(arg0, arg1.getAction());
 			}
 		}, new IntentFilter("android.intent.action.SCREEN_OFF"));
 
 		registerReceiver(new BroadcastReceiver() {
 			public void onReceive(Context arg0, Intent arg1) {
+				Log.i(getTag(), "onReceive():¡¡" + arg1.getAction());
+				MyControl.getInstance().onReceive(arg0, arg1);
 				start(arg0, arg1.getAction());
 			}
 		}, new IntentFilter("android.intent.action.SCREEN_ON"));

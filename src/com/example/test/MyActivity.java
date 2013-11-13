@@ -1,22 +1,43 @@
 package com.example.test;
 
+import com.example.test.c.MyControl;
+import com.example.test.c.MyListener;
+import com.example.test.m.MyModel;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-public class MyActivity extends Activity {
+public class MyActivity extends Activity implements MyListener {
 	private static final String TAG = MyActivity.class.getSimpleName();
-	private ImageView imageView1;
+	private TextView tv;
+
+	private Handler handler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			tv.setText((String) msg.obj);
+		};
+	};
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		imageView1 = (ImageView) findViewById(R.id.imageView1);
+		tv = (TextView) findViewById(R.id.tv);
+		tv.setText(MyModel.get());
+	}
+
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
 		MyService.start(this, getTag());
+		// MyActivity2.show(this);
+
+		MyControl.getInstance().setListener(this);
 	}
 
 	protected void onStart() {
@@ -27,8 +48,6 @@ public class MyActivity extends Activity {
 		Log.i(getTag(), MyReceiver.getTag());
 		Log.i(getTag(), MyReceiver2.getTag());
 		Log.i(getTag(), MyService.getTag());
-		MyService.start(this, getTag());
-		MyActivity2.show(this);
 	}
 
 	public static void show(Context context) {
@@ -38,5 +57,11 @@ public class MyActivity extends Activity {
 
 	public static String getTag() {
 		return TAG;
+	}
+
+	public void receive(String model) {
+		Message msg = handler.obtainMessage();
+		msg.obj = model;
+		handler.sendMessage(msg);
 	}
 }
