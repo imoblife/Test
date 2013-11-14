@@ -3,6 +3,8 @@ package com.example.test;
 import com.example.test.c.MyControl;
 import com.example.test.c.MyListener;
 import com.example.test.m.MyModel;
+import com.example.test.r.MyReceiver;
+import com.example.test.r.MyReceiver2;
 
 import android.app.Activity;
 import android.content.Context;

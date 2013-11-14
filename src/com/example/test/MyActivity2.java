@@ -1,5 +1,8 @@
 package com.example.test;
 
+import com.example.test.r.MyReceiver;
+import com.example.test.r.MyReceiver2;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

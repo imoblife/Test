@@ -4,10 +4,15 @@
     android:layout_height="match_parent"
     tools:context=".MyActivity" >
 
-    <TextView
-        android:id="@+id/tv"
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="tv" />
+        android:layout_height="fill_parent" >
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="tv" />
+    </ScrollView>
 
 </LinearLayout>
