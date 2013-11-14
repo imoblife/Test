@@ -53,18 +53,22 @@
 
         <receiver android:name="com.example.test.r.MyReceiver" >
             <intent-filter>
-                <action android:name="android.nfc.action.ADAPTER_STATE_CHANGED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.QUICKBOOT_POWEROFF" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.REBOOT" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.example.test.r.MyReceiver1" >
             <intent-filter>
-                <action android:name="android.speech.tts.TTS_QUEUE_PROCESSING_COMPLETED" />
-                <action android:name="android.speech.tts.engine.TTS_DATA_INSTALLED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.example.test.r.MyReceiver2" >
             <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.nfc.action.ADAPTER_STATE_CHANGED" />
+                <action android:name="android.speech.tts.TTS_QUEUE_PROCESSING_COMPLETED" />
+                <action android:name="android.speech.tts.engine.TTS_DATA_INSTALLED" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.example.test.r.MyReceiver3" >
@@ -133,7 +137,6 @@
         </receiver>
         <receiver android:name="com.example.test.r.MyReceiver9" >
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.CAMERA_BUTTON" />
                 <action android:name="android.intent.action.CONFIGURATION_CHANGED" />
                 <action android:name="android.intent.action.DATE_CHANGED" />
@@ -197,7 +200,6 @@
                 <action android:name="android.intent.action.PHONE_STATE" />
                 <action android:name="android.intent.action.PROVIDER_CHANGED" />
                 <action android:name="android.intent.action.PROXY_CHANGE" />
-                <action android:name="android.intent.action.REBOOT" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.example.test.r.MyReceiver14" >
