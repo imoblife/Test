@@ -1,10 +1,13 @@
 package com.example.test;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import com.example.test.c.MyControl;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -19,15 +22,19 @@ public class MyService extends Service {
 	private static final String TAG = MyService.class.getSimpleName();
 	public static String TITLE = getTag();
 
+	private List<RunningTaskInfo> tasks;
+
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			MyNotifier.get(getApplicationContext()).show(TITLE, TITLE);
-			handler.sendMessageDelayed(new Message(), 50);
+			handler.sendMessageDelayed(new Message(), 1000);
+
+			ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+			tasks = am.getRunningTasks(1);
+			RunningTaskInfo info = tasks.get(0);
 		};
 	};
 
-	
-	
 	public IBinder onBind(Intent intent) {
 		return null;
 	}
