@@ -3,7 +3,7 @@
     package="com.example.test"
     android:installLocation="auto"
     android:versionCode="1"
-    android:versionName="1.3.master" >
+    android:versionName="1.4.master" >
 
     <uses-sdk
         android:minSdkVersion="4"
