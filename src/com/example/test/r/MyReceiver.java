@@ -1,5 +1,7 @@
 package com.example.test.r;
 
+import util.UmengUtil;
+
 import com.example.test.MyService;
 import com.example.test.c.MyControl;
 
@@ -15,6 +17,8 @@ public class MyReceiver extends BroadcastReceiver {
 		Log.i(getTag(), "onReceive()33:¡¡" + intent.getAction());
 		MyControl.getInstance().onReceive(context, intent);
 		MyService.start(context, intent.getAction());
+		
+		UmengUtil.checkUmeng(context, TAG);
 	}
 
 	public static String getTag() {

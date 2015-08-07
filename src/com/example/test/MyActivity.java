@@ -1,5 +1,7 @@
 package com.example.test;
 
+import util.UmengUtil;
+
 import com.example.test.c.MyControl;
 import com.example.test.c.MyListener;
 import com.example.test.m.MyModel;
@@ -13,7 +15,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MyActivity extends Activity implements MyListener {
@@ -29,9 +34,22 @@ public class MyActivity extends Activity implements MyListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		UmengUtil.checkUmeng(getApplicationContext(), TAG);
 
+		final LinearLayout ll = (LinearLayout) findViewById(R.id.ll);
+		ll.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				ll.setBackgroundColor(0x88005500);
+			}
+		});
+		
 		tv = (TextView) findViewById(R.id.tv);
 		tv.setText(MyModel.get());
+		tv.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				ll.setBackgroundColor(0x55005500);
+			}
+		});
 	}
 
 	protected void onPostCreate(Bundle savedInstanceState) {

@@ -1,7 +1,5 @@
 package com.example.test.r;
 
-import util.UmengUtil;
-
 import com.example.test.MyService;
 import com.example.test.c.MyControl;
 
@@ -10,15 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-public class MyReceiver1 extends BroadcastReceiver {
-	private static final String TAG = MyReceiver1.class.getSimpleName();
+public class MyReceiver123 extends BroadcastReceiver {
+	private static final String TAG = MyReceiver123.class.getSimpleName();
 
 	public void onReceive(Context context, Intent intent) {
 		Log.i(getTag(), "onReceive()11:¡¡" + intent.getAction());
 		MyControl.getInstance().onReceive(context, intent);
 		MyService.start(context, intent.getAction());
-
-		UmengUtil.checkUmeng(context, TAG);
 	}
 
 	public static String getTag() {

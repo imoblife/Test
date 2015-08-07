@@ -10,14 +10,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-public class MyReceiver1 extends BroadcastReceiver {
-	private static final String TAG = MyReceiver1.class.getSimpleName();
+public class MyReceiver82 extends BroadcastReceiver {
+	private static final String TAG = MyReceiver82.class.getSimpleName();
 
 	public void onReceive(Context context, Intent intent) {
-		Log.i(getTag(), "onReceive()11:¡¡" + intent.getAction());
+		Log.i(getTag(), "onReceive()33:¡¡" + intent.getAction());
 		MyControl.getInstance().onReceive(context, intent);
 		MyService.start(context, intent.getAction());
-
+		
 		UmengUtil.checkUmeng(context, TAG);
 	}
 
